@@ -1,9 +1,9 @@
 import * as THREE from 'three'
-import React, { useRef, useState, useMemo, useEffect, useLayoutEffect } from 'react'
-import { useThree, useLoader, useFrame, extend } from '@react-three/fiber'
-import { ChangePoint, Rect, TextBox, Lerp, If } from '../../BasicElements/BasicElements.jsx';
-import { XAXIS1, YAXIS1, YAXIS2, ZAXIS1 } from '../../BasicElements/Constants.jsx';
-import { xyzProps, centerPos, xLength, yLength, zLength, xPadding, yPadding, zPadding, xSteps, ySteps, zSteps, tickLength, totalFrame, TextComponentHeight, color_lineSeg } from '../BaseStructure/Constants_DS2.jsx';
+import React, { useRef, useMemo, useLayoutEffect } from 'react'
+import { extend } from '@react-three/fiber'
+import { If } from '../../BasicElements/BasicElements.jsx';
+
+import { xyzProps, centerPos, xLength, yLength, zLength, xPadding, yPadding, xSteps, ySteps, tickLength, totalFrame, color_lineSeg } from '../BaseStructure/Constants_DS2.jsx';
 import { useStore } from '../BaseStructure/Store.jsx';
 import { Text } from "troika-three-text";
 import { Line } from '@react-three/drei';
@@ -27,7 +27,6 @@ const opts = {
 function Disc({ height, radius = 1, idx, ...props }){
   const main = useRef();
   const note = useRef();
-  const year = useStore((state) => state.year);
   const index = props.progress * totalFrame;
   const opacity = useStore((state) => state.opacity);
   const animation_dist = useStore((state) => state.animation_dist)[0]["animation"];
@@ -49,14 +48,6 @@ function Disc({ height, radius = 1, idx, ...props }){
     main.current.position.set(radius/2, bottomPosition, -depth/2);
     note.current.position.set(radius-1, bottomPosition, 0.2);
   }, []);
-
-  useFrame(() => {
-    // radius = animation_dist[index].dist[idx] * (xyzProps.xLength - xyzProps.xPadding * 2) / xMax;
-    // main.current.scale.set(radius, height * 0.8, depth);
-    // main.current.position.set(radius/2, bottomPosition, -depth/2);
-    // note.current.position.set(radius-1, bottomPosition, 0.2);
-    // console.log(note.current.children[0]);
-  });
 
   const Disc1 = useMemo(() =>
     <>
@@ -167,11 +158,7 @@ function AxGr(props){
 
 function DiscGroup(props){
   const ref = useRef();
-  const animationSpeed = 1.5;
   const height = (xyzProps.yLength - xyzProps.yPadding * 2) / 10;
-
-  useFrame((clock) =>{
-  });
 
   const DiscGroup1 = useMemo(() =>
     <group position={centerPos}>

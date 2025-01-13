@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import { Static, Animated, Immersive } from '../../BasicElements/Constants.jsx';
 
 const useStore = create((set) => ({
   idx:0,

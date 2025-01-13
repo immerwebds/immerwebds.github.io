@@ -1,6 +1,5 @@
 import * as THREE from 'three'
 import React, { useMemo } from 'react'
-import { TextBox } from '../../BasicElements/BasicElements.jsx';
 import { title, text1, text2, text3, text4, text5, text6 } from '../BaseStructure/Constants_DS1.jsx';
 import { xyzProps, TextComponentHeight } from '../BaseStructure/Constants_DS1.jsx';
 
@@ -90,8 +89,6 @@ const TextComponent = React.forwardRef((props, ref) =>{
 });
 
 const TextComponent_Static = React.forwardRef((props, ref) =>{
-  const textPos = [-xyzProps.xLength / 2, -xyzProps.yLength / 2, -xyzProps.zLength / 2];
-  const xWidth = -2*textPos[0]
   const titles = [title];
   const texts = [text1, text2, text3 + text4 + text5, text6];
 

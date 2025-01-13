@@ -16534,16 +16534,8 @@ export const total_data = [[1816,   0, 0.205344],
 ]
 
 const size = 0.1; //size of one box
-const height = 20; //scale of value
-const num_age = 80;
 const num_year = 2019 - 1816 + 1;
 
-const gap_na = 0.15; // distance between name and axis
-const gap_ca = 0.3 // distance between chart and axis(padding)
-const len_age = size * num_age + gap_ca;
-const len_year = size * num_year;
-const len_mortality = 4.5
-const len_tick = 0.1;
 
 export const colors_rainbow = [
   new THREE.Color("#A8E6CF"), new THREE.Color("#C4F0BF"), new THREE.Color("#DCEDC1"),
@@ -16584,7 +16576,7 @@ export function colorMap(value){
 // DS4 Immersive-Animated-Static Shared Components
 export function ImageRect({position=[0, 0, 0], lookAt=true, img, visible, step, ...props}){
   const ref = useRef();
-  const texture = useLoader(TextureLoader, img)
+  const texture = useLoader(TextureLoader, 'imgs/'+img)
   const planeGeom = new THREE.PlaneGeometry(0.8,1);
   const planeMat = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide});
   const cylinderHeight = 0.5;

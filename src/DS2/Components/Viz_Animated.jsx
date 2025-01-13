@@ -1,8 +1,7 @@
 import * as THREE from 'three'
-import React, { useRef, useState, useMemo, useEffect, useLayoutEffect } from 'react'
-import { useThree, useLoader, useFrame, extend } from '@react-three/fiber'
-import { ChangePoint, Rect, TextBox, Lerp, If } from '../../BasicElements/BasicElements.jsx';
-import { XAXIS1, YAXIS1, YAXIS2, ZAXIS1 } from '../../BasicElements/Constants.jsx';
+import React, { useRef, useMemo } from 'react'
+import { useFrame, extend } from '@react-three/fiber'
+import { If } from '../../BasicElements/BasicElements.jsx';
 import { xyzProps, centerPos, xLength, yLength, zLength, xPadding, yPadding, zPadding, xSteps, ySteps, zSteps, tickLength, totalFrame, TextComponentHeight, color_lineSeg } from '../BaseStructure/Constants_DS2.jsx';
 import { useStore } from '../BaseStructure/Store.jsx';
 import { Text } from "troika-three-text";
@@ -28,7 +27,6 @@ function Disc({ height, radius = 1, idx, ...props }){
   const main = useRef();
   const note = useRef();
   const index = useStore((state) => state.idx);
-  const year = useStore((state) => state.year);
   const opacity = useStore((state) => state.opacity);
   const animation_dist = useStore((state) => state.animation_dist)[0]["animation"];
   const bottomPosition = xyzProps.yPadding + (idx + 0.5) * height + 0.1;
@@ -160,8 +158,6 @@ function AxGr({props}){
 
 function DiscGroup(props){
   const ref = useRef();
-  const step = useStore((state) => state.step);
-  const animationSpeed = 1.5;
   const height = (xyzProps.yLength - xyzProps.yPadding * 2) / 10;
 
   useFrame((clock) =>{

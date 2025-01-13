@@ -2,8 +2,6 @@ import { create } from 'zustand';
 
 export const idces = [0, 0, 3, 0];
 export const visibleNum = [12, 6, 9, 12];
-// export const width = [rectWidth, rectDepth, rectDepth * xyzProps.dataA1.length / visibleNum[1], rectDepth * xyzProps.dataA1.length / visibleNum[2], rectDepth];
-
 
 const useStore = create((set) => ({
   idx:0,

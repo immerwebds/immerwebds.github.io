@@ -21,12 +21,8 @@ export const xSteps = xyzProps.xSteps,      ySteps = xyzProps.ySteps,     zSteps
 export const centerPos = [-xyzProps.xLength/2, -xyzProps.yLength/2, -xyzProps.zLength/2];
 
 export const tickLength = 0.6;
-export const color_beige = new THREE.Color("rgb(248, 245, 240)");
-export const color4_bright = new THREE.Color("rgb(215, 204, 206)");
-export const color4_dark = new THREE.Color("rgb(134, 105, 114)");
 export const color_ocean1 = new THREE.Color("rgb(125, 181, 255)");
 export const color_ocean2 = new THREE.Color("rgb(140, 219, 237)");
-export const color_ocean_dark = new THREE.Color("rgb(51, 60, 66)");
 export const color_lineSeg = new THREE.Color("rgb(91, 63, 54)");
 
 // DS2 overlays

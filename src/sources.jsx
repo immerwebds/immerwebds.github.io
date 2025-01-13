@@ -33,12 +33,12 @@ function SourcesTable({props}){
               <MyCell align="left" width={180}>Author(s)</MyCell>
               <MyCell align="left" width={50}>Year</MyCell>
               <MyCell align="left" width={300}>Link</MyCell>
-              <MyCell align="center" width={120}>DT1<br/><img style={{margin: '6px'}} src="DT1.jpg" width="120" /></MyCell>
-              <MyCell align="center" width={120}>DT2<br/><img style={{margin: '6px'}} src="DT2.jpg" width="120" /></MyCell>
-              <MyCell align="center" width={120}>DT3<br/><img style={{margin: '6px'}} src="DT3.jpg" width="120" /></MyCell>
-              <MyCell align="center" width={120}>DT4<br/><img style={{margin: '6px'}} src="DT4.jpg" width="120" /></MyCell>
-              <MyCell align="center" width={120}>DT5<br/><img style={{margin: '6px'}} src="DT5.jpg" width="120" /></MyCell>
-              <MyCell align="center" width={270}>DT6<br/><img style={{margin: '6px'}} src="DT6.jpg" width="213" /></MyCell>
+              <MyCell align="center" width={120}>DT1<br/><img style={{margin: '6px'}} src="imgs/DT1.jpg" width="120" /></MyCell>
+              <MyCell align="center" width={120}>DT2<br/><img style={{margin: '6px'}} src="imgs/DT2.jpg" width="120" /></MyCell>
+              <MyCell align="center" width={120}>DT3<br/><img style={{margin: '6px'}} src="imgs/DT3.jpg" width="120" /></MyCell>
+              <MyCell align="center" width={120}>DT4<br/><img style={{margin: '6px'}} src="imgs/DT4.jpg" width="120" /></MyCell>
+              <MyCell align="center" width={120}>DT5<br/><img style={{margin: '6px'}} src="imgs/DT5.jpg" width="120" /></MyCell>
+              <MyCell align="center" width={270}>DT6<br/><img style={{margin: '6px'}} src="imgs/DT6.jpg" width="213" /></MyCell>
             </TableRow>
           </TableHead>
           <TableBody>

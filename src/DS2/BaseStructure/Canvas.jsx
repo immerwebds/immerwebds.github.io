@@ -131,7 +131,6 @@ function CanvasComponents({steps, ...props}){
   const setWaterLevel = useStore((state) => state.setWaterLevel);
   const setOpacity = useStore((state) => state.setOpacity);
   const animation_main = useStore((state) => type==Immersive?state.animation_Imm:type==Animated?state.animation_Anm:state.animation_Stt);
-  const animation_dist = useStore((state) => state.animation_dist);
   const textCamPos = new THREE.Vector3(0, 20000, 1000);
 
   useFrame((state, delta) => {

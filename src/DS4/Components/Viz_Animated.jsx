@@ -147,7 +147,7 @@ function Axis_Mortality(){
     </group>
   )
 }
-function Axis_Mortality_0(){
+function AxisMortality0(){
   const Mortality = useMemo(() => {
     const tickNum = 8;
     const len = len_mortality * 2;
@@ -308,8 +308,7 @@ function ImgPlane4({idx = 0, ...props}){
   const group = useRef();
   const ranges = useStore((state) => state.ranges);
 
-  const imgNames = ['childbirth.png', 'penicillin.png'];
-  const [texture1, texture2] = useLoader(TextureLoader, imgNames);
+  const [texture1, texture2] = useLoader(TextureLoader, ['imgs/childbirth.png', 'imgs/penicillin.png']);
   const imgPos = [[1932, 25], [1945, 40]];
 
   const planeGeom = new THREE.PlaneGeometry(2.4, 3);
@@ -370,7 +369,6 @@ const dashProps = {
 function Highlight5({startX, startY, rad, xLen, yLen, idx, ...props}){
   const ref = useRef();
   const step = useStore((state) => state.narrativeStep);
-  const flag2 = useStore((state) => state.flag2);
   const progress = useStore((state) =>state.progress);
   const step5Clip = useStore((state) =>state.step5Clip);
   let bProgress = 0;
@@ -406,9 +404,8 @@ function Highlight5({startX, startY, rad, xLen, yLen, idx, ...props}){
 }
 
 function ImgPlane5({idx = 0, onClick, ...props}){
-  const imgNames = ['war1.png', 'war2.png', 'childbirth.png', 'penicillin.png', 'cholera.png', 'prussianwar.png'];
   const xCoords = [3, 5, 4, 6, 1, 2]
-  const imgs = useLoader(TextureLoader, imgNames);
+  const imgs = useLoader(TextureLoader, ['imgs/war1.png', 'imgs/war2.png', 'imgs/childbirth.png', 'imgs/penicillin.png', 'imgs/cholera.png', 'imgs/prussianwar.png']);
   const planeSize = 3.75;
   const planeGeom = new THREE.PlaneGeometry(planeSize * 0.8, planeSize);
   const planeMat = new THREE.MeshBasicMaterial({map: imgs[idx], side: THREE.DoubleSide, transparent: true, opacity:1.0});
@@ -639,7 +636,7 @@ function LineAtAge({age_start=18, age_end=40, ...props}){
 
   function ImageRect_18to40({position=[0, 0, 0], img, ...props}){
 
-    const texture = useLoader(TextureLoader, img);
+    const texture = useLoader(TextureLoader, 'imgs/' + img);
     const planeGeom = new THREE.PlaneGeometry(2, 2.5);
     const planeMat = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true});
     const cylinderHeight = 0.4;
@@ -749,7 +746,7 @@ const VisComponent = React.forwardRef((props, ref) =>{
     Axis_Years      : [false, true,  true,  false, true,  true],
     Axis_Ages       : [false, true,  false, false, true,  true],
     Axis_Mortality  : [false, false, false,  true, false, false],
-    Axis_Mortality_0: [false, false, true,  false, false, false],
+    AxisMortality0: [false, false, true,  false, false, false],
     Legend          : [false, true,  false, false, true,  true],
   }
 
@@ -797,8 +794,8 @@ const VisComponent = React.forwardRef((props, ref) =>{
       <group ref={axis_Mortality} visible={visibleArr.Axis_Mortality[step]}>
         <Axis_Mortality type={Static}/>
       </group>
-      <group ref={axis_Mortality} visible={visibleArr.Axis_Mortality_0[step]}>
-        <Axis_Mortality_0 type={Static}/>
+      <group ref={axis_Mortality} visible={visibleArr.AxisMortality0[step]}>
+        <AxisMortality0 type={Static}/>
       </group>
       <group ref={legend} visible={visibleArr.Legend[step]}>
         <Legend/>

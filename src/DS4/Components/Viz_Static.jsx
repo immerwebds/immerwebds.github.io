@@ -141,7 +141,7 @@ function Axis_Mortality(){
   )
 }
 
-function Axis_Mortality_0(){
+function AxisMortality0(){
   const Mortality = useMemo(() => {
     const tickNum = 8;
     const len = len_mortality * 2;
@@ -178,9 +178,7 @@ function Axis_Mortality_0(){
 }
 
 function HeatmapAtAge0(){
-  const step = useStore((state) => state.narrativeStep);
   const ranges = useStore((state) => state.ranges);
-  const setRanges = useStore((state) => state.setRanges);
   const ref = useRef();
   const temp = new THREE.Object3D()
 
@@ -255,11 +253,7 @@ function Highlight2(){
 }
 
 function ImgPlane4({idx = 0, ...props}){
-
-  const ranges = useStore((state) => state.ranges);
-
-  const imgNames = ['childbirth.png', 'penicillin.png'];
-  const [texture1, texture2] = useLoader(TextureLoader, imgNames);
+  const [texture1, texture2] = useLoader(TextureLoader,  ['imgs/childbirth.png', 'imgs/penicillin.png']);
   const imgPos = [[1932, 25], [1945, 40]];
 
   const planeGeom = new THREE.PlaneGeometry(2.4, 3);
@@ -347,7 +341,6 @@ function Highlight5({startX, startY, rad, xLen, yLen, idx, ...props}){
 }
 
 function ImgPlane5({idx = 0, ...props}){
-  const ranges = useStore((state) => state.ranges);
   const setRanges = useStore((state) => state.setRanges);
   const step5Clip = useStore((state) => state.step5Clip);
   const setStep5Clip = useStore((state) => state.setStep5Clip);
@@ -363,7 +356,7 @@ function ImgPlane5({idx = 0, ...props}){
     [0, 80, 1845, 1895],
     [0, 80, 1816, 2019]
   ];
-  const texture = useLoader(TextureLoader, imgNames[idx]);
+  const texture = useLoader(TextureLoader, 'imgs/' + imgNames[idx]);
   const planeSize = 3.75;
   const planeGeom = new THREE.PlaneGeometry(planeSize * 0.8, planeSize);
   const planeMat = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide, transparent: true, opacity:1.0});
@@ -446,7 +439,6 @@ function Heatmap(){
   const ref = useRef();
 
   const step = useStore((state) => state.narrativeStep);
-  const flag2 = useStore((state) => state.flag2);
   const ranges = useStore((state) => state.ranges);
   const prevRanges = useStore((state) => state.prevRanges);
   const diffRanges = useStore((state) => state.diffRanges);
@@ -518,10 +510,6 @@ function Heatmap(){
 
 // step 3
 function LineAtAge({age_start=18, age_end=40, ...props}){
-  const step = useStore((state) => state.narrativeStep);
-  const targetClip = useStore((state) => state.target);
-  const ref = useRef();
-  const temp = new THREE.Object3D()
   const mySize = len_year / (age_end - age_start);
   let points = [];
   for(let i = 0; i < num_year; i++){
@@ -567,7 +555,7 @@ function LineAtAge({age_start=18, age_end=40, ...props}){
 
   function ImageRect_18to40({position=[0, 0, 0], img, ...props}){
 
-    const texture = useLoader(TextureLoader, img);
+    const texture = useLoader(TextureLoader, 'imgs/' + img);
     const planeGeom = new THREE.PlaneGeometry(2, 2.5);
     const planeMat = new THREE.MeshBasicMaterial({map: texture, side: THREE.DoubleSide});
     const cylinderHeight = 0.4;
@@ -645,8 +633,6 @@ function LineAtAge({age_start=18, age_end=40, ...props}){
 const VisComponent = React.forwardRef((props, ref) =>{
   const {gl} = useThree();
   const step = useStore((state) => state.narrativeStep);
-  const ranges = useStore((state) => state.ranges);
-  const setRanges = useStore((state) => state.setRanges);
   //total Step = 6
   const visibleArr = {
     // init, heatmap, age0, lineCharts, heatmap, heatmap
@@ -656,18 +642,13 @@ const VisComponent = React.forwardRef((props, ref) =>{
     Axis_Years      : [true, true,  true,  false, true,  true],
     Axis_Ages       : [true, true,  false, false, true,  true],
     Axis_Mortality  : [false, false, false,  true, false, false],
-    Axis_Mortality_0: [false, false, true,  false, false, false],
+    AxisMortality0: [false, false, true,  false, false, false],
     Legend          : [true, true,  false, false, true,  true],
   }
 
   useLayoutEffect(() =>{
     gl.localClippingEnabled = true;
   }, []);
-
-  useFrame(() => {
-    // console.log(gl.info.memory);
-    // console.log(gl.info.memory, gl.info.render);
-  })
 
   return(
     <group position={[0, 0, 0]} ref={ref}>
@@ -689,8 +670,8 @@ const VisComponent = React.forwardRef((props, ref) =>{
       <group visible={visibleArr.Axis_Mortality[step]}>
         <Axis_Mortality />
       </group>
-      <group visible={visibleArr.Axis_Mortality_0[step]}>
-        <Axis_Mortality_0 />
+      <group visible={visibleArr.AxisMortality0[step]}>
+        <AxisMortality0 />
       </group>
       <group visible={visibleArr.Legend[step]}>
         <Legend/>

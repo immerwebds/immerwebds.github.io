@@ -1,13 +1,12 @@
 import * as THREE from 'three'
-import React, { useRef, useState, useMemo, useEffect, useLayoutEffect } from 'react'
+import React, { useRef, useMemo, useLayoutEffect } from 'react'
 import { useThree, useLoader, useFrame, extend } from '@react-three/fiber'
-import { ChangePoint, Rect, TextBox, Lerp, If } from '../../BasicElements/BasicElements.jsx';
-import { XAXIS1, YAXIS1, YAXIS2, ZAXIS1 } from '../../BasicElements/Constants.jsx';
-import { xyzProps, centerPos, xLength, yLength, zLength, xPadding, yPadding, zPadding, xSteps, ySteps, zSteps, tickLength, totalFrame, TextComponentHeight, color4_bright, color4_dark, color_ocean1, color_ocean2, color_ocean_dark, color_lineSeg } from '../BaseStructure/Constants_DS2.jsx';
+import { ChangePoint, Lerp, If } from '../../BasicElements/BasicElements.jsx';
+import { xyzProps, centerPos, xLength, yLength, zLength, xPadding, yPadding, xSteps, ySteps, tickLength, totalFrame, color_ocean1, color_lineSeg } from '../BaseStructure/Constants_DS2.jsx';
 import { useStore } from '../BaseStructure/Store.jsx';
 import { Water } from '../../BasicElements/Water.jsx';
 import { Text } from "troika-three-text";
-import { Sky, Line } from '@react-three/drei';
+import { Line } from '@react-three/drei';
 extend ({ Water, Text });
 
 const opts = {
@@ -28,7 +27,6 @@ function Disc({ height, radius = 1, idx, ...props }){
   const main = useRef();
   const note = useRef();
   const index = useStore((state) => state.idx);
-  const year = useStore((state) => state.year);
   const step = useStore((state) => state.step);
   const opacity = useStore((state) => state.opacity);
   let color = "rgb(" + Math.floor(255 * (1 - opacity)) + "," + Math.floor(255 * (1 - opacity)) + "," + Math.floor(255 * (1 - opacity)) + ")";
@@ -273,26 +271,16 @@ function DiscGroup(props){
 
 function OceanGroup(props){
   const ref = useRef();
-  const space = useRef();
   const plane1 = useRef();
   const plane2 = useRef();
   const plane3 = useRef();
   const plane4 = useRef();
   const planeSize = 1000;
-  const depthObj = useRef();
 
-  const step = useStore((state) => state.step);
   const waterLevel = useStore((state) => state.waterLevel);
   const opacity = useStore((state) => state.opacity);
   const geom = new THREE.PlaneGeometry(planeSize, planeSize);
   const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color("rgb(20, 55, 120)"), side: THREE.FrontSide, transparent: true});
-
-  // const geom_depth = new THREE.BoxGeometry(planeSize, planeSize, planeSize);
-  // const mat_depth = new THREE.MeshDepthMaterial({fog: false, transparent:true, opacity:0.2});
-
-  let scaleWeight = 1;
-  let radius = [10, 12, 15, 18, 42, 35, 31, 19, 11, 5];
-  let height = (xyzProps.yLength - xyzProps.yPadding * 2) / (radius.length);
 
   useLayoutEffect(() => {
     const width = planeSize;
@@ -319,20 +307,11 @@ function OceanGroup(props){
 
   const OceanGroup1 = useMemo(() =>
     <group ref={ref} position={[0, 0, -planeSize/2 + planeSize * 0.420]}>
-      {
-        <>
-          <Ocean surfacePosition={-xyzProps.yLength/2} />
-          <mesh ref={plane1} geometry={geom} material={mat} />
-          <mesh ref={plane2} geometry={geom} material={mat} />
-          <mesh ref={plane3} geometry={geom} material={mat} />
-          <mesh ref={plane4} geometry={geom} material={mat} />
-        </>
-        // <mesh ref={depthObj} geometry={geom_depth} material={mat_depth} />
-        // <mesh position={[0, -xyzProps.yLength/2, -50]}>
-        //   <boxGeometry args={[120, 120, 120]} />
-        //   <meshStandardMaterial  side={THREE.DoubleSide} color={color_ocean2} transparent={true} opacity={0.8}/>
-        // </mesh>
-      }
+      <Ocean surfacePosition={-xyzProps.yLength/2} />
+      <mesh ref={plane1} geometry={geom} material={mat} />
+      <mesh ref={plane2} geometry={geom} material={mat} />
+      <mesh ref={plane3} geometry={geom} material={mat} />
+      <mesh ref={plane4} geometry={geom} material={mat} />
     </group>
   , []);
 
@@ -341,7 +320,6 @@ function OceanGroup(props){
       {OceanGroup1}
     </>
   );
-  // <Sky exposure={0.45} rayleigh={3} turbidity={1} elevation={90} />
 }
 
 const VisComponent = React.forwardRef((props, ref) =>{

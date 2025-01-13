@@ -12,11 +12,9 @@ import { Canvas } from './Canvas.jsx';
 function NarrativeBox(props){
   const setPrevFunc = useStore((state)=> state.setPrev);
   const setNextFunc = useStore((state)=> state.setNext);
-  const initStore = useStore((state) => state.initStore)
   const type = useBasicStore((state) => state.type);
 
   let text = type==Immersive?texts:texts_as;
-  let container = ""
 
   const step = useStore((state) => state.narrativeStep);
 
@@ -63,11 +61,7 @@ function NarrativeBox(props){
 
 function Main4({props}){
   const type = useBasicStore((state) => state.type);
-  const setType = useBasicStore((state) => state.setType);
-
-  // narratiev related codes
   const step = useStore((state) => state.narrativeStep);
-  const setNarrativeStep = useStore((state) => state.setNarrativeStep);
   const flag2 = useStore((state) => state.flag2);
 
   useEffect(() => {
@@ -79,17 +73,6 @@ function Main4({props}){
       }
     }
   }, [flag2]);
-
-  function handleHover(){
-    if(type == Immersive){
-      console.log(flag2);
-      if(!flag2){
-        document.getElementById('Canvas').style.cursor = step==0?'default':'grab';
-      }else{
-        document.getElementById('Canvas').style.cursor = 'default';
-      }
-    }
-  }
 
   function handleMouseDown(){
     if(type == Immersive){

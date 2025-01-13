@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import ReactDom from 'react-dom'
 import React, { useState, useLayoutEffect } from 'react'
 import Main1 from './DS1/BaseStructure/Main.jsx'

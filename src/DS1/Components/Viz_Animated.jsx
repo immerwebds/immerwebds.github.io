@@ -1,16 +1,14 @@
 import * as THREE from 'three';
-import React, { useRef, useMemo, useCallback } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber'
-import { Line, TextBox, Rect, If, Lerp } from '../../BasicElements/BasicElements.jsx';
-import { XAXIS1, YAXIS1, YAXIS2, ZAXIS1 } from '../../BasicElements/Constants.jsx';
+import { Line, TextBox, If, Lerp } from '../../BasicElements/BasicElements.jsx';
+import { XAXIS1, YAXIS1 } from '../../BasicElements/Constants.jsx';
 import { xyzProps, rectDepth, rectWidth, centerPos, xLength, yLength, zLength, xPadding, yPadding, zPadding, xSteps, ySteps, zSteps, tickLength, color1, color2 } from '../BaseStructure/Constants_DS1.jsx';
 import { useStore } from '../BaseStructure/Store.jsx';
 
 // for animation in progress[2-3-4-5]
 // how many datapoints will be marked?
 const visibleNum = [12, 6, 9, 12];
-// what would be the start index?
-const idces = [0, 0, 3, 0];
 
 const AxGr = React.forwardRef((props, ref) => {
   const progress = useStore((state) => state.progress);

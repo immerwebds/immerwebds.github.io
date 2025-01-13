@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 import React, { useMemo, useLayoutEffect } from 'react';
 import { Line, TextBox, Rect, If } from '../../BasicElements/BasicElements.jsx';
 import { XAXIS1, YAXIS1, YAXIS2, ZAXIS1 } from '../../BasicElements/Constants.jsx';

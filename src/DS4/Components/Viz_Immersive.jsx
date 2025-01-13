@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import React, { useRef, useMemo, useEffect, useLayoutEffect } from 'react'
+import React, { useRef, useMemo, useLayoutEffect } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
 import { Line, If } from '../../BasicElements/BasicElements.jsx';
 import { Immersive } from '../../BasicElements/Constants.jsx';
@@ -204,12 +204,12 @@ function ImageGroup(){
 
   return(
     <group>
-      <ImageRect position={[9.8, 0.78, 6.0]} img = {'war1.png'} visible={war1} step={step} />
-      <ImageRect position={[12.4, 0.5, 5.8]} img = {'war2.png'} visible={war2} step={step} />
-      <ImageRect position={[11.6, 0.1, 5.3]} img = {'childbirth.png'} visible={childbirth} step={step} />
-      <ImageRect position={[12.9, 0.13, 4]} img = {'penicillin.png'} visible={penicillin} step={step} />
-      <ImageRect position={[1.5, 0.3, 3]} img = {'cholera.png'} visible={cholera} step={step} />
-      <ImageRect position={[5.4, 0.4, 3]} img = {'prussianwar.png'} visible={prussianwar} step={step} />
+      <ImageRect position={[9.8, 0.78, 6.0]}  img = {'war1.png'} visible={war1} step={step} />
+      <ImageRect position={[12.4, 0.5, 5.8]}  img = {'war2.png'} visible={war2} step={step} />
+      <ImageRect position={[11.6, 0.1, 5.3]}  img = {'childbirth.png'} visible={childbirth} step={step} />
+      <ImageRect position={[12.9, 0.13, 4]}   img = {'penicillin.png'} visible={penicillin} step={step} />
+      <ImageRect position={[1.5, 0.3, 3]}     img = {'cholera.png'} visible={cholera} step={step} />
+      <ImageRect position={[5.4, 0.4, 3]}     img = {'prussianwar.png'} visible={prussianwar} step={step} />
     </group>
   )
 }

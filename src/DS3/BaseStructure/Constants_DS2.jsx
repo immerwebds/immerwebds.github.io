@@ -1,4 +1,3 @@
-import * as THREE from 'three';
 // DS2 animation
 export const totalFrame = 5000;
 export const TextComponentHeight = 1500;
