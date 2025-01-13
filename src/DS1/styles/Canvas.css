@@ -1,0 +1,24 @@
+.DS1 .CanvasS {
+  position: sticky;
+  top: 0;
+  left: calc(50% - 525px);
+  width: 1050px;
+  height: 100vh;
+  /* height: 640px; */
+}
+
+.DS1 .CanvasA {
+  position: sticky;
+  top: 0;
+  left: calc(50% - 525px);
+  width: 1050px;
+  height: 100vh;
+}
+
+.DS1 .CanvasI {
+  position: sticky;
+  top: 0;
+  left: calc(50% - 525px);
+  width: 1050px;
+  height: 100vh;
+}

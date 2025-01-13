@@ -1,0 +1,68 @@
+.DS4 .DS4Canvas{
+  position: absolute;
+  width: 1050px;
+  height: 740px;
+  top: 0%;
+  left: calc(50% - 525px);
+  z-index: 1;
+}
+
+.TitleDS4 {
+  color: rgba(0,0,0,0.8);
+  font-size: 2em;
+  width: 80%;
+  text-align: center;
+}
+
+.Story{
+  color: rgba(0,0,0,0.8);
+  font-size: 1em;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.ColumnContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+
+  position: absolute;
+  left: calc(50% + 525px - 400px - 80px);
+  top: 60px;
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+  align-items: center;
+  z-index: 99;
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.RowContainer{
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: fit-content;
+  margin: 7.5px auto 7.5px auto;
+}
+
+.NarrativeButton {
+  background-color :rgb(223, 89, 87);
+  color :rgb(255, 255, 255);
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0.25rem 0.25rem;
+
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+
+  display: inline-block;
+  width: 7rem;
+
+  border: none;
+  border-radius: 20px;
+}

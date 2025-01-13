@@ -1,0 +1,84 @@
+.Viz {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: pre-line;
+
+  position: relative;
+}
+
+.PageContentsN {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.TitleContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.Title {
+  width: 100%;
+  font-size: 48px;
+}
+
+.PageController {
+  white-space: pre-line;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+}
+
+.TextContainer {
+  position: relative;
+  width: 400px;
+}
+
+.Texts {
+  position: absolute;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.DS4Layout{
+  position: relative;
+  height: 100%;
+  margin: 1px;
+}
+
+.NarrativeBox{
+  position: absolute;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  z-index: 999;
+}
+
+.Button:hover {
+  background-color: rgba(255, 0, 0, 1);
+}
+
+/* from this, will be applied to surveyJS */
+.sv_header__text h5 span {
+  font-size: 16px;
+}

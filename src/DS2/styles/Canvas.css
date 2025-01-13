@@ -1,0 +1,28 @@
+.DS2 .CanvasS {
+  position: sticky;
+  top: 0;
+  left: calc(50% - 525px);
+  width: 1050px;
+  height: 100vh;
+  /* height: 640px; */
+}
+
+.DS2 .CanvasA {
+  position: sticky;
+  top: 0;
+  left: calc(50% - 525px);
+  width: 1050px;
+  height: 100vh;
+}
+
+.DS2 .CanvasI {
+  position: sticky;
+  top: 0;
+  left: calc(50% - 525px);
+  width: 1050px;
+  height: 100vh;
+}
+
+#dummy {
+  /* height: 5000px; */
+}
