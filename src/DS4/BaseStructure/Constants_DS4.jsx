@@ -4,6 +4,7 @@ import { useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import fonts from "../../BasicElements/fonts.jsx";
 import { If } from '../../BasicElements/BasicElements.jsx';
+import BezierEasing from 'bezier-easing';
 
 
 // DS2 consts
@@ -16533,8 +16534,16 @@ export const total_data = [[1816,   0, 0.205344],
 [2019,  80, 0.034347]
 ]
 
-const size = 0.1; //size of one box
-const num_year = 2019 - 1816 + 1;
+export const bezierFunc = BezierEasing(0.4, 0, 0.4, 1);
+export const size = 0.1 //size of one box
+export const num_age = 80;
+export const num_year = 2019 - 1816 + 1;
+export const gap_na = 0.15; // distance between name and axis
+export const gap_ca = 0.3 // distance between chart and axis(padding)
+export const len_age = size * num_age + gap_ca;
+export const len_year = size * num_year;
+export const len_mortality = 4.5
+export const len_tick = 0.1;
 
 
 export const colors_rainbow = [

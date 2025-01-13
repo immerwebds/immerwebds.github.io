@@ -3,21 +3,11 @@ import React, { useRef, useMemo, useLayoutEffect } from 'react'
 import { useThree, useFrame } from '@react-three/fiber'
 import { Line, If } from '../../BasicElements/BasicElements.jsx';
 import { Immersive } from '../../BasicElements/Constants.jsx';
-import { total_data, colorMap, Legend, Text, ImageRect } from '../BaseStructure/Constants_DS4.jsx';
+import { total_data, colorMap, Legend, Text, ImageRect, size, gap_na, gap_ca, len_age, len_year, len_mortality, len_tick } from '../BaseStructure/Constants_DS4.jsx';
 import { useStore } from '../BaseStructure/Store.jsx';
 
 //parameter
-const size = 0.1; //size of one box
 const height = 20; //scale of value
-const num_age = 80;
-const num_year = 2019 - 1816 + 1;
-
-const gap_na = 0.15; // distance between name and axis
-const gap_ca = 0.3 // distance between chart and axis(padding)
-const len_age = size * num_age + gap_ca;
-const len_year = size * num_year;
-const len_mortality = 4.5
-const len_tick = 0.1;
 
 const data = total_data //total_data
 const rowNum = 81;

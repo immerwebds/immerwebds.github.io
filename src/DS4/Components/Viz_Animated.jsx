@@ -4,27 +4,13 @@ import { useThree, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { Line, If } from '../../BasicElements/BasicElements.jsx';
 import { Static } from '../../BasicElements/Constants.jsx';
-import { total_data, colorMap, Legend, Text, cuttingPlanes} from '../BaseStructure/Constants_DS4.jsx';
+import { total_data, colorMap, Legend, Text, cuttingPlanes, bezierFunc, size, num_age, num_year, gap_na, gap_ca, len_age, len_year, len_mortality, len_tick } from '../BaseStructure/Constants_DS4.jsx';
 import { useStore } from '../BaseStructure/Store.jsx';
 import { Line as DreiLine, CubicBezierLine } from '@react-three/drei';
-import BezierEasing from 'bezier-easing';
 
 //parameter
 const data = total_data //total_data
-const size = 0.1 //size of one box
 const height = 40 //scale of value
-
-const num_age = 80;
-const num_year = 2019 - 1816 + 1;
-
-const gap_na = 0.15; // distance between name and axis
-const gap_ca = 0.3 // distance between chart and axis(padding)
-const len_age = size * num_age + gap_ca;
-const len_year = size * num_year;
-const len_mortality = 4.5
-const len_tick = 0.1;
-
-const bezierFunc = BezierEasing(0.4, 0, 0.4, 1);
 
 // Step 1, 2, 3, 4, 5
 function Axis_Years(){
@@ -80,7 +66,6 @@ function Axis_Ages(){
 
   const Ages = useMemo(() => {
     const tickNum = 9;
-    const len = len_age;
 
     return(
       <>
@@ -566,7 +551,6 @@ function LineAtAge({age_start=18, age_end=40, ...props}){
 
   const progress = useStore((state) =>state.progress);
 
-  const temp = new THREE.Object3D()
   const mySize = len_year / (age_end - age_start);
   let points = [];
   for(let i = 0; i < num_year; i++){
@@ -741,22 +725,20 @@ const VisComponent = React.forwardRef((props, ref) =>{
   const visibleArr = {
     // init, heatmap, age0, lineCharts, heatmap, heatmap
     Heatmap         : [true,  true,  false, false, true,  true],
-    HeatmapAtAge0   : [false,  false,  true,  false, false, false],
+    HeatmapAtAge0   : [false, false,  true,  false, false, false],
     LineAtAge       : [false, false, false, true,  false, false],
     Axis_Years      : [false, true,  true,  false, true,  true],
     Axis_Ages       : [false, true,  false, false, true,  true],
     Axis_Mortality  : [false, false, false,  true, false, false],
-    AxisMortality0: [false, false, true,  false, false, false],
+    AxisMortality0  : [false, false, true,  false, false, false],
     Legend          : [false, true,  false, false, true,  true],
   }
 
   useLayoutEffect(() =>{
-    // console.log("I'm rendered")
     gl.localClippingEnabled = true;
   }, []);
 
   useFrame(() => {
-    // console.log(gl.info.memory);
     legend.current.traverse(child => {
       if(child.material){
         child.material.opacity = Math.min(progress[1] * 2.5, 1);
